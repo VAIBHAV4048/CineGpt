@@ -31,7 +31,7 @@ const Login = () => {
         <h1 className="text-white text-4xl">{sign ? "Sign in" : "Sign up"}</h1>
         {!sign && (
           <input
-          required
+            required
             ref={name}
             className="w-full rounded-md p-2 bg-gray-800 text-white"
             type="text"
@@ -40,7 +40,7 @@ const Login = () => {
           />
         )}
         <input
-        required
+          required
           ref={email}
           className=" rounded-sm w-full p-2 bg-gray-800"
           type="text"
@@ -48,19 +48,17 @@ const Login = () => {
           placeholder="Email Address"
         />
         <input
-        required
+          required
           ref={password}
           className="rounded-sm p-2 w-full bg-gray-800"
           type="Password"
           name="Name"
           placeholder="Password"
         />
-        <p className="text-lg text-red-500">{showError}</p>
+        {showError && <p className="text-lg text-red-500">{showError}</p>}
         <button
           className=" rounded-sm p-2  cursor-pointer w-full bg-[#A53DFC] hover:bg-[#9234df] text-lg font-semibold"
-          onClick={() =>{
-
-         
+          onClick={() => {
             setShowError(
               isValid(
                 sign,
@@ -68,10 +66,8 @@ const Login = () => {
                 password.current.value,
                 name?.current?.value,
               ),
-            )
-          
-          }
-        }
+            );
+          }}
         >
           Continue
         </button>
