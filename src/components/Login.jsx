@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Header from "./Header";
+import { isValid } from "../utils/validate";
 
 const Login = () => {
   const [sign, setSign] = useState(true);
-
+  const email = useRef(null);
+  const password = useRef(null);
+  const name = useRef(null);
+  const [showError, setShowError] = useState(null);
   const signToggle = () => {
     setSign(!sign);
   };
@@ -27,36 +31,59 @@ const Login = () => {
         <h1 className="text-white text-4xl">{sign ? "Sign in" : "Sign up"}</h1>
         {!sign && (
           <input
-            className="
-      w-full
-    rounded-md
-    p-2
-    bg-gray-800
-    text-white
-    "
+          required
+            ref={name}
+            className="w-full rounded-md p-2 bg-gray-800 text-white"
             type="text"
             name="Name"
             placeholder="Full name"
           />
         )}
         <input
+        required
+          ref={email}
           className=" rounded-sm w-full p-2 bg-gray-800"
           type="text"
           name="Email"
           placeholder="Email Address"
         />
         <input
+        required
+          ref={password}
           className="rounded-sm p-2 w-full bg-gray-800"
           type="Password"
           name="Name"
           placeholder="Password"
         />
-        <button className=" rounded-sm p-2  cursor-pointer w-full bg-[#A53DFC] hover:bg-[#9234df]">
-          Submit
+        <p className="text-lg text-red-500">{showError}</p>
+        <button
+          className=" rounded-sm p-2  cursor-pointer w-full bg-[#A53DFC] hover:bg-[#9234df] text-lg font-semibold"
+          onClick={() =>{
+
+         
+            setShowError(
+              isValid(
+                sign,
+                email.current.value,
+                password.current.value,
+                name?.current?.value,
+              ),
+            )
+          
+          }
+        }
+        >
+          Continue
         </button>
         <p className="text-gray-400 text-lg">
           {sign ? "New to Cinegpt?" : "Already a user?"}
-          <span className="text-white ml-1 cursor-pointer">
+          <span
+            className="text-white ml-1 cursor-pointer"
+            onClick={() => {
+              setSign(!sign);
+              setShowError(null);
+            }}
+          >
             {sign ? "Sign up now" : "Sign in"}
           </span>
         </p>
