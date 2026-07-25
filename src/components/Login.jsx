@@ -20,7 +20,7 @@ const Login = () => {
     password.current.value,
     name?.current?.value,
   );
-
+  setShowError(error);
     if (showError) return;
     if (!sign) {
       createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
