@@ -26,7 +26,7 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
-        console.log(errorcode + "-" + errorMessage);
+        console.log(errorCode + "-" + errorMessage);
       });
   }
 
