@@ -13,22 +13,33 @@ const Login = () => {
   const signToggle = () => {
     setSign(!sign);
   };
-  if (showError) return;
-  if (!sign) {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up
-        const user = userCredential.user;
-        console.log(user);
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-        console.log(errorCode + "-" + errorMessage);
-      });
-  }
+  const handleContinue = () => {
+    setShowError(
+      isValid(
+        sign,
+        email.current.value,
+        password.current.value,
+        name?.current?.value,
+      ),
+    );
+
+    if (showError) return;
+    if (!sign) {
+      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          console.log(errorCode + "-" + errorMessage);
+        });
+    }
+  };
 
   return (
     <>
@@ -76,16 +87,7 @@ const Login = () => {
         {showError && <p className="text-lg text-red-500">{showError}</p>}
         <button
           className=" rounded-sm p-2  cursor-pointer w-full bg-[#A53DFC] hover:bg-[#9234df] text-lg font-semibold"
-          onClick={() => {
-            setShowError(
-              isValid(
-                sign,
-                email.current.value,
-                password.current.value,
-                name?.current?.value,
-              ),
-            );
-          }}
+          onClick={handleContinue}
         >
           Continue
         </button>
