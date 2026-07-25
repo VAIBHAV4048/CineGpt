@@ -14,14 +14,12 @@ const Login = () => {
     setSign(!sign);
   };
   const handleContinue = () => {
-    setShowError(
-      isValid(
-        sign,
-        email.current.value,
-        password.current.value,
-        name?.current?.value,
-      ),
-    );
+  const error = isValid(
+    sign,
+    email.current.value,
+    password.current.value,
+    name?.current?.value,
+  );
 
     if (showError) return;
     if (!sign) {
