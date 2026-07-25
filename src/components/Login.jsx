@@ -21,7 +21,7 @@ const Login = () => {
     name?.current?.value,
   );
   setShowError(error);
-    if (showError) return;
+    if (error) return;
     if (!sign) {
       createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
