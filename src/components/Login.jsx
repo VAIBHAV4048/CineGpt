@@ -2,7 +2,10 @@ import { useState, useRef } from "react";
 import Header from "./Header";
 import { isValid } from "../utils/validate";
 import { auth } from "../utils/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const Login = () => {
   const [sign, setSign] = useState(true);
@@ -14,16 +17,20 @@ const Login = () => {
     setSign(!sign);
   };
   const handleContinue = () => {
-  const error = isValid(
-    sign,
-    email.current.value,
-    password.current.value,
-    name?.current?.value,
-  );
-  setShowError(error);
+    const error = isValid(
+      sign,
+      email.current.value,
+      password.current.value,
+      name?.current?.value,
+    );
+    setShowError(error);
     if (error) return;
     if (!sign) {
-      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value,
+      )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
@@ -36,20 +43,23 @@ const Login = () => {
           // ..
           setShowError(errorCode + "-" + errorMessage);
         });
-    }
-    else{
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    console.log(user);
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    setShowError(errorCode + "-" + errorMessage);
-  });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value,
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setShowError(errorCode + "-" + errorMessage);
+        });
     }
   };
 
@@ -110,6 +120,8 @@ const Login = () => {
             onClick={() => {
               setSign(!sign);
               setShowError(null);
+              email.current.value = "";
+              password.current.value = "";
             }}
           >
             {sign ? "Sign up now" : "Sign in"}
