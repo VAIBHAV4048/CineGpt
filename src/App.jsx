@@ -1,11 +1,14 @@
-
 import { createBrowserRouter, RouterProvider } from "react-router";
-
-
-import Body from "./components/Body";
+import { Outlet } from "react-router";
+import Header from "./components/Header";
 
 function App() {
-  return <Body />;
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
 }
 
 export default App;
