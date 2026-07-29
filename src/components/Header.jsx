@@ -4,9 +4,12 @@ import profile from "../assets/profile.svg";
 import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 const Header = ({ isSign }) => {
+   const [popUp, setPopUp] = useState(false);
+  const user=useSelector((store)=>store.user)
   const navigate = useNavigate();
-  const [popUp, setPopUp] = useState(false);
+ 
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -37,12 +40,14 @@ const Header = ({ isSign }) => {
         )}
 
         {popUp && (
-          <div className="absolute w-[90%] p-12 top-[50%] left-[50%] bg-amber-200 -translate-1/2 rounded-sm flex flex-col gap-6 bg-black/70 text-white max-w-md z-9">
-
+          <div className="fixed w-[90%] p-12 top-[50%] left-[50%]  -translate-1/2 rounded-sm flex flex-col gap-6 bg-black/70 text-white max-w-md z-9">
+<h1 className="Profile text-4xl text-white" >Profile</h1>
+<p className="text-lg text-gray-300">Name: {user?.displayName}</p>
+<p className="text-lg text-gray-300">Email: {user?.email}</p>
                   <button
           className=" rounded-sm p-2  cursor-pointer w-full bg-[#A53DFC] hover:bg-[#9234df] text-lg font-semibold"
           onClick={handleSignOut}
-        ></button>
+        >Sign Out</button>
           </div>
         )}
    
