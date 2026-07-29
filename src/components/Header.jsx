@@ -2,10 +2,10 @@ import { Navigate, useNavigate } from "react-router";
 import logo from "../assets/logo.svg";
 import profile from "../assets/profile.svg";
 import { auth } from "../utils/firebase";
-
+import { signOut } from "firebase/auth";
 
 const Header = ({ isSign }) => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -14,7 +14,7 @@ const Header = ({ isSign }) => {
       })
       .catch((error) => {
         // An error happened.
-        navigate("/error")
+        navigate("/error");
       });
   };
   return (
