@@ -7,6 +7,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
+import { updateProfile } from "firebase/auth";
+
 const Login = () => {
   const [sign, setSign] = useState(true);
   const email = useRef(null);
@@ -34,8 +36,21 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          updateProfile(auth.currentUser, {
+            displayName: name.current.value,
+            photoURL: "",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
           console.log(user);
           // ...
+          setShowError(error.code + " - " + error.message);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -65,7 +80,7 @@ const Login = () => {
 
   return (
     <>
-      <Header isSign={false}/>
+      <Header isSign={false} />
       <div className="relative h-screen ">
         <img
           className=" absolute inset-0 object-cover w-full h-full"
