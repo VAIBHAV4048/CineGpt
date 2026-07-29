@@ -27,7 +27,7 @@ const Header = ({ isSign }) => {
           <img className="w-24 lg:w-36" src={logo} alt="" />
         </div>
         {isSign && (
-          <div className="profile w-8 h-8 m-4" onClick={setPopUp(true)}>
+          <div className="profile w-8 h-8 m-4" onClick={()=>setPopUp(true)}>
             <img
               src={profile}
               alt="profile"
