@@ -17,16 +17,14 @@ function App() {
       console.log("Auth user:", user);
       if (user) {
         const { uid, email, displayName } = user;
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
+      
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
         navigate("/browse");
-        // ...
+        
       } else {
         dispatch(removeUser());
         navigate("/");// we can also use window.location.href
-        // User is signed out
-        // ...
+     
       }
     });
   }, []);
