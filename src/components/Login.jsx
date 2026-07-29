@@ -65,7 +65,7 @@ const Login = () => {
 
   return (
     <>
-      <Header />
+      <Header isSign={false}/>
       <div className="relative h-screen ">
         <img
           className=" absolute inset-0 object-cover w-full h-full"
