@@ -30,7 +30,7 @@ const Header = ({ isSign }) => {
           <img className="w-24 lg:w-36" src={logo} alt="" />
         </div>
         {isSign && (
-          <div className="profile w-8 h-8 m-4" onClick={()=>setPopUp(true)}>
+          <div className="profile w-8 h-8 m-4" onClick={()=>setPopUp(!popUp)}>
             <img
               src={profile}
               alt="profile"
@@ -44,6 +44,7 @@ const Header = ({ isSign }) => {
 <h1 className="Profile text-4xl text-white" >Profile</h1>
 <p className="text-lg text-gray-300">Name: {user?.displayName}</p>
 <p className="text-lg text-gray-300">Email: {user?.email}</p>
+<button className="absolute top-4 right-4 " onClick={()=>setPopUp(!popUp)}>❌</button>
                   <button
           className=" rounded-sm p-2  cursor-pointer w-full bg-[#A53DFC] hover:bg-[#9234df] text-lg font-semibold"
           onClick={handleSignOut}
