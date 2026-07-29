@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "./utils/userSlice";
 
 function App() {
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
