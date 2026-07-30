@@ -46,7 +46,7 @@ const Header = ({ isSign }) => {
 <p className="text-lg text-gray-300">Email: {user?.email}</p>
 <button className="absolute top-4 right-4 " onClick={()=>setPopUp(!popUp)}>❌</button>
                   <button
-          className=" rounded-sm p-2  cursor-pointer w-full bg-[#7D08DD] hover:bg-[#6206AD] text-lg font-semibold"
+          className=" rounded-sm p-2  cursor-pointer w-full bg-[#7D08DD] hover:bg-[#7207C9] text-lg font-semibold"
           onClick={handleSignOut}
         >Sign Out</button>
           </div>

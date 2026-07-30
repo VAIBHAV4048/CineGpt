@@ -123,7 +123,7 @@ const Login = () => {
         />
         {showError && <p className="text-lg text-red-500">{showError}</p>}
         <button
-          className=" rounded-sm p-2  cursor-pointer w-full bg-[#A53DFC] hover:bg-[#9234df] text-lg font-semibold"
+          className=" rounded-sm p-2  cursor-pointer w-full bg-[#7D08DD] hover:bg-[#7207C9] text-lg font-semibold"
           onClick={handleContinue}
         >
           Continue
