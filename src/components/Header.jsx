@@ -12,10 +12,6 @@ const Header = ({ isSign }) => {
  
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        navigate("/");
-      })
       .catch((error) => {
         // An error happened.
         navigate("/error");
