@@ -48,6 +48,8 @@ const Login = () => {
             .then(() => {
               // Profile updated!
               // ...
+
+                      const { uid, email, displayName } = user;
                 dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
             })
             .catch((error) => {
