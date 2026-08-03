@@ -49,7 +49,7 @@ const Login = () => {
               // Profile updated!
               // ...
 
-                      const { uid, email, displayName } = user;
+                      const { uid, email, displayName } = auth.currentUser;
                 dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
             })
             .catch((error) => {
