@@ -57,10 +57,11 @@ const Login = () => {
             .catch((error) => {
               // An error occurred
               // ...
+                        // setShowError(error.code + " - " + error.message);
             });
           console.log(user);
           // ...
-          setShowError(error.code + " - " + error.message);
+
         })
         .catch((error) => {
           const errorCode = error.code;
