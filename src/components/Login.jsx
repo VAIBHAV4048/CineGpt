@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-
+import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
 
 import { updateProfile } from "firebase/auth";
@@ -49,8 +49,10 @@ const Login = () => {
               // Profile updated!
               // ...
 
-                      const { uid, email, displayName } = auth.currentUser;
-                dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName }),
+              );
             })
             .catch((error) => {
               // An error occurred
