@@ -7,6 +7,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
+import { useDispatch } from "react-redux";
+
 import { updateProfile } from "firebase/auth";
 
 const Login = () => {
@@ -14,7 +16,10 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
+
   const [showError, setShowError] = useState(null);
+
+  const dispatch = useDispatch();
   const signToggle = () => {
     setSign(!sign);
   };
@@ -43,6 +48,7 @@ const Login = () => {
             .then(() => {
               // Profile updated!
               // ...
+                dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
             })
             .catch((error) => {
               // An error occurred
