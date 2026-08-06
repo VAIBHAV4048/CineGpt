@@ -13,7 +13,7 @@ function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe =onAuthStateChanged(auth, (user) => {
       console.log("Auth user:", user);
       if (user) {
         const { uid, email, displayName } = user;
@@ -27,6 +27,7 @@ function App() {
      
       }
     });
+    return unsubscribe;//considered as good practice to cleanup when this component unmounts
   }, []);
   return (
     <>
