@@ -9,25 +9,22 @@ import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "./utils/userSlice";
 
 function App() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    const unsubscribe =onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       console.log("Auth user:", user);
       if (user) {
         const { uid, email, displayName } = user;
-      
+
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
         navigate("/browse");
-        
       } else {
         dispatch(removeUser());
-        navigate("/");// we can also use window.location.href
-     
+        navigate("/"); // we can also use window.location.href
       }
     });
-    return unsubscribe;//considered as good practice to cleanup when this component unmounts
+    return unsubscribe; //considered as good practice to cleanup when this component unmounts
   }, []);
   return (
     <>
