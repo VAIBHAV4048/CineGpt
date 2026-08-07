@@ -92,7 +92,7 @@ const Login = () => {
   return (
     <>
       <Header isSign={false} />
-      <div className="relative h-screen ">
+      <div className="relative h-dvh ">
         <img
           className=" absolute inset-0 object-cover w-full h-full"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/918dda59-2ae7-4eaa-9be2-8a3ddd979d4e/web/IN-en-20260720-TRIFECTA-perspective_ca5664c9-e7ca-45da-9d85-173740dbae71_large.jpg"
